@@ -15,7 +15,7 @@
     
     <h3>Existing titles</h3>
   <% @titles.each do |title| %>
-    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id %>" value="<%= title.id %>"><%= title.name %><%='checked' if @figure.titles.include?(title) %></input><br>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id %>" value="<%= title.id %>"<%= title.name %><%='checked' if @figure.titles.include?(title) %>><%= title.name %></input><br>
   <% end %>
   
   <br>
@@ -27,12 +27,13 @@
 
     <h3>Existing landmarks</h3>
   <% @landmarks.each do |landmark| %>
-    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"><%= landmark.name %><%='checked' if @figure.landmarks.include?(landmark) %></input><br>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id%>" value="<%= landmark.id %>"<%= landmark.name %><%='checked' if @figure.landmarks.include?(landmark) %>><%= landmark.name %></input><br>
+    
   <% end %>
   <br>
 
     <label>Figure's Landmarks:</label><br>
-    <input id= "new_landmark" type="text" name="landmark[name]">
+    <input id= "new_landmark" type="text" name="landmark[name]" >
 
     <br>
 
