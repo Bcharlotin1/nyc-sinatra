@@ -7,7 +7,16 @@
   </head>
   <body>
     <h1><%=@figure.name%></h1><br>
+     <h3> Titles</h3><br>
 
+  <% @figure.titles.each do |title| %>
+      <h4><%=title.name%></h4>
+  <% end %>
+  
+      <h3> Landmarks</h3><br>
+    <% @figure.landmarks.each do |landmark| %>
+      <h4><%=landmark.name%></h4>
+  <% end %>
      
   </body>
 </html>
