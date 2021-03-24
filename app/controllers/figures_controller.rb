@@ -1,7 +1,10 @@
 class FiguresController < ApplicationController
   # add controller methods
+  get "/figures" do
+    @figures = Figure.all 
+    erb :'figures/index'
+  end
 
-  
   get '/figures/new' do
  
     @figures = Figure.all
@@ -9,6 +12,13 @@ class FiguresController < ApplicationController
     @titles = Title.all
     erb :'/figures/new'
   end
+
+  get "/figures/:id" do
+    @figure = Figure.find(params[:id])
+    erb :'/figures/show'
+  end
+
+
 
   post '/figures' do
   
@@ -29,10 +39,6 @@ class FiguresController < ApplicationController
     end
   end
 
-  get "/figures" do
-    @figures = Figure.all 
-    erb :'figures/index'
-  end
 
   get '/figures/:id/edit' do 
     @figure = Figure.find(params[:id])
@@ -51,16 +57,13 @@ class FiguresController < ApplicationController
     end
     # binding.pry
     if !params["landmark"]["name"].empty?
-      landmark = Landmark.create(name: params[:landmark][:name])
+      landmark = Landmark.create(params[:landmark])
       @figure.landmarks << landmark
     end
     @figure.save
     redirect "/figures/#{@figure.id}"
   end
 
-  get "/figures/:id" do
-    @figure = Figure.find(params[:id])
-    erb :'/figures/show'
-  end
+
 end
 
